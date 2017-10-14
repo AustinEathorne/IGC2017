@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: c607c0180db62b94c8dafafbc5e25dcd
+timeCreated: 1507996286
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Florentia
+  fontNames:
+  - Florentia
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: aad9faa499055dc4481032418c11bc8b, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

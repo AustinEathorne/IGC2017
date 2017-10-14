@@ -67,6 +67,7 @@ public class ColourSelector : MonoBehaviour {
 						gameManager.ClosePalette ();
 						gameManager.SetSelectedColour (this.selectedColour);
 
+						gameManager.SetPaletteButtonActive ();
 
 						Debug.Log("name:" + hit.gameObject.name);
 						//Debug.Log("hitPos: " + localPoint.x + ", " + localPoint.y);
@@ -74,7 +75,6 @@ public class ColourSelector : MonoBehaviour {
 						Debug.Log("col: " + selectedColour);
 					}
 				}
-
 				objectsHit.Clear();
 			}
 		}

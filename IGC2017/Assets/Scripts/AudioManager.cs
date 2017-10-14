@@ -2,14 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DataHolder : Singleton<DataHolder>
+public class AudioManager : Singleton<AudioManager> 
 {
-	private static DataHolder instance = null;
+	private static AudioManager instance = null;
 
-	public int lastPainting = 0;
-
-
-	public static DataHolder Instance
+	public static AudioManager Instance
 	{
 		get
 		{

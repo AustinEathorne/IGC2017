@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class StartButton : MonoBehaviour
 {
     public GameObject InstructionsPanel;
+
+	public List<Image> images;
+
+	public float imageFadeSpeed = 5.0f;
 
     private void Start()
     {
@@ -14,12 +19,22 @@ public class StartButton : MonoBehaviour
 
     public void ShowInstructions()
     {
-        InstructionsPanel.SetActive(true);       
+        InstructionsPanel.SetActive(true);   
     }
 
     public void StartGame()
-    {
-        InstructionsPanel.SetActive(false);
-        SceneManager.LoadScene("LineDrawing");        
+	{
+		this.StartCoroutine (this.StartGameCo());      
     }
+
+	public IEnumerator StartGameCo()
+	{
+		this.gameObject.GetComponent<FadeScript> ().FadeImagesSimultaneously (images.ToArray(), false, imageFadeSpeed);
+
+
+		InstructionsPanel.SetActive(false);
+		SceneManager.LoadScene("LineDrawing");
+
+		yield return null;
+	}
 }

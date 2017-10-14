@@ -313,6 +313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drawPrefab: {fileID: 1848008421147350, guid: f64abe43966239a47b0ffdbb2eec4315, type: 2}
+  zOffsetdForPlane: -1
   gameManager: {fileID: 803890119}
 --- !u!4 &382850635
 Transform:
@@ -491,8 +492,8 @@ MonoBehaviour:
   lineDrawer: {fileID: 382850633}
   colourPalette: {fileID: 1366032652}
   firstFadeDelay: 1
-  drawTime: 1
-  initialFadeSpeed: 0.5
+  drawTime: 15
+  initialFadeSpeed: 1
   imageFadeSpeed: 3
   scenePainting:
   - {fileID: 721268670}

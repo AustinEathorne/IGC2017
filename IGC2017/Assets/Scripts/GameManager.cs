@@ -88,13 +88,8 @@ public class GameManager : MonoBehaviour
 
 	private IEnumerator SetupGame()
 	{
-<<<<<<< HEAD
-      	// Ensure images are transparent
-		for (int i = 0; i < scenePainting.Count; i++) 
-=======
 		// Ensure images are transparent
 		for (int i = 0; i < scenePainting.Count; i++)
->>>>>>> afcf5c29bd99e0c3bd9b78a0cd953e8f473fdeeb
 		{
 			Color col = Color.white;
 			col.a = 0.0f;
@@ -218,16 +213,15 @@ public class GameManager : MonoBehaviour
 		this.paletteButton.SetActive (true);
 	}
 
-<<<<<<< HEAD
     public void SetGesso()
     {
         isGessoSet = true;
         gessoButton.SetActive(false);
     }
-=======
+
 	public void LoadMenuScene()
 	{
 		SceneManager.LoadScene ("Menu");
 	}
->>>>>>> afcf5c29bd99e0c3bd9b78a0cd953e8f473fdeeb
+
 }

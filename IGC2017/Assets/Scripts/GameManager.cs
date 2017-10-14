@@ -30,12 +30,17 @@ public class GameManager : MonoBehaviour
 	[SerializeField]
 	private float imageFadeSpeed = 3.0f;
 
+	private float currentTimeLimit;
+
 	[Header("Images")]
 	[SerializeField]
 	private List<Image> scenePainting;
 	[SerializeField]
 	private Image scenePalette;
+	[SerializeField]
+	private Image BG;
 
+	[Header("Sprites")]
 	[SerializeField]
 	private List<Sprite> imageList1 = new List<Sprite>();
 	[SerializeField]
@@ -47,7 +52,7 @@ public class GameManager : MonoBehaviour
 	[SerializeField]
 	private List<Sprite> imageList5 = new List<Sprite>();
 
-	[SerializeField]
+	[SerializeField]// why no list :(
 	private Sprite pallete1;
 	[SerializeField]
 	private Sprite pallete2;
@@ -57,6 +62,9 @@ public class GameManager : MonoBehaviour
 	private Sprite pallete4;
 	[SerializeField]
 	private Sprite pallete5;
+
+	[SerializeField]
+	private List<Sprite> BGs;
 
 	[Header("Buttons")]
 	[SerializeField]
@@ -68,6 +76,10 @@ public class GameManager : MonoBehaviour
 	[SerializeField]
 	private FadeScript fadeScript;
 
+	[Header("Text")]
+	[SerializeField]
+	private Text timeText;
+
     private DataHolder dataHolder;
 
     private bool isGessoSet;
@@ -75,6 +87,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject gessoButton;
 
+	private float elapsedTime;
+	private bool hasStarted = false;
 
 	private IEnumerator Start()
 	{
@@ -84,6 +98,16 @@ public class GameManager : MonoBehaviour
 
 		this.StartCoroutine (this.SetupGame());
 		yield return null;
+	}
+
+	private void Update()
+	{
+		if(hasStarted)
+		{
+			currentTimeLimit -= Time.deltaTime;
+
+			timeText.text = currentTimeLimit.ToString ();
+		}
 	}
 
 	private IEnumerator SetupGame()
@@ -115,35 +139,44 @@ public class GameManager : MonoBehaviour
 			for(int i = 0; i < 4; i++)
 			{
 				scenePainting [i].sprite = imageList1 [i];
+				scenePalette.sprite = pallete1;
+				BG.sprite = BGs [0];
 			}
 			break;
 		case 1:
 			for(int i = 0; i < 4; i++)
 			{
 				scenePainting [i].sprite = imageList2 [i];
+				scenePalette.sprite = pallete2;
+				BG.sprite = BGs [1];
 			}
 			break;
 		case 2:
 			for(int i = 0; i < 4; i++)
 			{
 				scenePainting [i].sprite = imageList3 [i];
+				scenePalette.sprite = pallete3;
+				BG.sprite = BGs [2];
 			}
 			break;
 		case 3:
 			for(int i = 0; i < 4; i++)
 			{
 				scenePainting [i].sprite = imageList4 [i];
+				scenePalette.sprite = pallete4;
+				BG.sprite = BGs [3];
 			}
 			break;
 		case 4:
 			for(int i = 0; i < 4; i++)
 			{
 				scenePainting [i].sprite = imageList5 [i];
+				scenePalette.sprite = pallete5;
+				BG.sprite = BGs [4];
 			}
 			break;
 
 		default:
-
 			break;
 		}
 
@@ -156,19 +189,23 @@ public class GameManager : MonoBehaviour
 
         // Fade out desired images
         yield return this.StartCoroutine(this.FadePaintingPart(0));
+		this.hasStarted = true;
 
 		// Wait for round time
+		this.currentTimeLimit = this.drawTime;
 		yield return new WaitForSeconds(this.drawTime);
 
 		// Fade out desired images
 		yield return this.StartCoroutine(this.FadePaintingPart(3));
 
 		// Wait for round time
+		this.currentTimeLimit = this.drawTime;
 		yield return new WaitForSeconds(this.drawTime);
 
 		yield return this.StartCoroutine (this.FadePaintingPart(1));
 
 		// Wait for round time
+		this.currentTimeLimit = this.drawTime;
 		yield return new WaitForSeconds(this.drawTime);
 
 		yield return this.StartCoroutine (this.FadePaintingPart(2));

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ColourPalette
   - Button
+  - DataHolder
   layers:
   - Default
   - TransparentFX

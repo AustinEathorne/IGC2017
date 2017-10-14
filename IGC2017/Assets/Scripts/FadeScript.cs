@@ -39,4 +39,40 @@ public class FadeScript : MonoBehaviour
 			yield return null;
 		}
 	}
+
+	// Fade Image
+	public IEnumerator FadeImage(Image image, bool isFadingIn, float fadeSpeed)
+	{
+		float tempAlpha;
+
+		if (isFadingIn) 
+		{
+			tempAlpha = image.color.a;
+
+			while (tempAlpha <= 0.99f) 
+			{
+				tempAlpha = Mathf.MoveTowards (tempAlpha, 1.0f, fadeSpeed * Time.deltaTime);
+
+
+				image.color = new Color (image.color.r, image.color.g, image.color.b, tempAlpha);
+
+
+				yield return null;
+			}
+
+		} else {
+			tempAlpha = image.color.a;
+
+			while (tempAlpha >= 0.01f) {
+				tempAlpha = Mathf.MoveTowards (tempAlpha, 0.0f, fadeSpeed * Time.deltaTime);
+
+				image.color = new Color (image.color.r, image.color.g, image.color.b, tempAlpha);
+
+
+				yield return null;
+			}
+
+			yield return null;
+		}
+	}
 }

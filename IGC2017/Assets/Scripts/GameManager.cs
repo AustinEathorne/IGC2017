@@ -21,16 +21,17 @@ public class GameManager : MonoBehaviour
 
 	[Header("Timing")]
 	[SerializeField]
+	private float firstFadeDelay = 1.0f;
+	[SerializeField]
+	private float drawTime = 30.0f;
+	[SerializeField]
 	private float initialFadeSpeed = 3.0f;
 	[SerializeField]
 	private float imageFadeSpeed = 3.0f;
 
-	[SerializeField]
-	private float roundTime = 30.0f;
-
 	[Header("Images")]
 	[SerializeField]
-	private Image scenePainting;
+	private List<Image> scenePainting;
 	[SerializeField]
 	private Image scenePalette;
 
@@ -56,6 +57,12 @@ public class GameManager : MonoBehaviour
 	[SerializeField]
 	private Sprite pallete5;
 
+	[Header("Buttons")]
+	[SerializeField]
+	private GameObject finishButton;
+	[SerializeField]
+	private GameObject paletteButton;
+
 	[Header("Utility")]
 	[SerializeField]
 	private FadeScript fadeScript;
@@ -72,8 +79,16 @@ public class GameManager : MonoBehaviour
 
 	private IEnumerator SetupGame()
 	{
-		this.selectedImage = Random.Range (0, paintingCount);
+		// Ensure images are transparent
+		for (int i = 0; i < scenePainting.Count; i++) 
+		{
+			Color col = Color.white;
+			col.a = 0.0f;
+			scenePainting [i].color = col;
+		}
 
+		// Choose random painting
+		this.selectedImage = Random.Range (0, paintingCount);
 		while(this.selectedImage == dataHolder.lastPainting)
 		{
 			this.selectedImage = Random.Range (0, paintingCount);
@@ -81,13 +96,81 @@ public class GameManager : MonoBehaviour
 			yield return null;
 		}
 
+		dataHolder.lastPainting = this.selectedImage;
 		Debug.Log ("Using painting " + this.selectedImage);
 
+		// pass scene images the appropriate sprites
+		switch(selectedImage)
+		{
+		case 0:
+			for(int i = 0; i < 4; i++)
+			{
+				scenePainting [i].sprite = imageList1 [i];
+			}
+			break;
+		case 1:
+			for(int i = 0; i < 4; i++)
+			{
+				scenePainting [i].sprite = imageList2 [i];
+			}
+			break;
+		case 2:
+			for(int i = 0; i < 4; i++)
+			{
+				scenePainting [i].sprite = imageList3 [i];
+			}
+			break;
+		case 3:
+			for(int i = 0; i < 4; i++)
+			{
+				scenePainting [i].sprite = imageList4 [i];
+			}
+			break;
+		case 4:
+			for(int i = 0; i < 4; i++)
+			{
+				scenePainting [i].sprite = imageList5 [i];
+			}
+			break;
 
+		default:
 
-		//this.fadeScript.StartCoroutine(this.fadeScript.FadeImagesSimultaneously(, true, this.initialFadeSpeed);
+			break;
+		}
 
-		yield return null;
+		// Fade images in
+		yield return this.fadeScript.StartCoroutine(this.fadeScript.FadeImagesSimultaneously(scenePainting.ToArray(), true, this.initialFadeSpeed));
+
+		yield return new WaitForSeconds (this.firstFadeDelay);
+
+		// Fade out desired images
+		yield return this.StartCoroutine(this.FadePaintingPart(0));
+
+		// Wait for round time
+		yield return new WaitForSeconds(this.drawTime);
+
+		// Fade out desired images
+		yield return this.StartCoroutine(this.FadePaintingPart(3));
+
+		// Wait for round time
+		yield return new WaitForSeconds(this.drawTime);
+
+		yield return this.StartCoroutine (this.FadePaintingPart(1));
+
+		// Wait for round time
+		yield return new WaitForSeconds(this.drawTime);
+
+		yield return this.StartCoroutine (this.FadePaintingPart(2));
+
+		// Turn off line drawing and enable button to finish
+		this.lineDrawer.SetActive(false);
+		this.finishButton.SetActive (true);
+		this.paletteButton.SetActive (false);
+	}
+
+	private IEnumerator FadePaintingPart(int index)
+	{
+		yield return this.fadeScript.StartCoroutine(this.fadeScript.FadeImage(scenePainting[index], false, this.initialFadeSpeed));
 	}
 
 	public void OpenPalette()
@@ -112,5 +195,9 @@ public class GameManager : MonoBehaviour
 	public Color32 GetSelectedColour()
 	{
 		return this.selectedColour;
+	}
+	public void SetPaletteButtonActive()
+	{
+		this.paletteButton.SetActive (true);
 	}
 }

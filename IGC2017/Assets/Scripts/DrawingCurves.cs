@@ -8,8 +8,9 @@ public class DrawingCurves : MonoBehaviour
     GameObject thisLine;
     Vector3 startPosition;
     Plane objPlane;
+    public float zOffsetdForPlane = -1;
 
-	[SerializeField]
+    [SerializeField]
 	private GameManager gameManager;
 
 	private GameObject lastLine;
@@ -19,7 +20,7 @@ public class DrawingCurves : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        objPlane = new Plane(Camera.main.transform.forward * -1, this.transform.position);
+        objPlane = new Plane(Camera.main.transform.forward * zOffsetdForPlane, this.transform.position);
     }
 
     // Update is called once per frame
@@ -38,9 +39,6 @@ public class DrawingCurves : MonoBehaviour
             this.thisLine.GetComponent<TrailRenderer>().material.color = gameManager.GetSelectedColour();
             this.thisLine.GetComponent<TrailRenderer>().material.SetColor("_Albedo", gameManager.GetSelectedColour());
             this.thisLine.GetComponent<TrailRenderer>().material.SetColor("_EmissionColor", gameManager.GetSelectedColour());
-            
-
-
 
             Ray myRay = Camera.main.ScreenPointToRay(Input.mousePosition);
             float rayDistance;

@@ -23,6 +23,7 @@ public class StartButton : MonoBehaviour
     }
 
     public void StartGame()
+<<<<<<< HEAD
 	{
 		this.StartCoroutine (this.StartGameCo());      
     }
@@ -37,4 +38,33 @@ public class StartButton : MonoBehaviour
 
 		yield return null;
 	}
+=======
+    {
+        InstructionsPanel.SetActive(false);
+        SceneManager.LoadScene("LineDrawing");  
+        
+        //while (true)
+        //{            
+        //    setPeeps();            
+        //}
+    }
+    //static void setPeeps()
+    //{
+    //    string ian;
+    //    string mack = "ENDO GAMEZZZ FOR LIFE";        
+    //    ian = "coolest";
+    //    while (ian == "coolest")
+    //    {
+    //        mack = "Baby Enzo";
+    //    }
+
+    //    if (mack == "Baby Enzo")
+    //    {
+    //        Debug.Log("wooooooooooooooooooooooooooooooooooooooo!");
+    //    }
+
+    //}
+
+
+>>>>>>> a42c0e2de7304c41125e2545a43b023b4b161d85
 }

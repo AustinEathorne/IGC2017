@@ -68,11 +68,19 @@ public class GameManager : MonoBehaviour
 	[SerializeField]
 	private FadeScript fadeScript;
 
-	private DataHolder dataHolder;
+    private DataHolder dataHolder;
+
+    private bool isGessoSet;
+
+    [SerializeField]
+    private GameObject gessoButton;
+
 
 	private IEnumerator Start()
 	{
 		dataHolder = GameObject.FindGameObjectWithTag ("DataHolder").GetComponent<DataHolder>();
+        isGessoSet = false;
+        gessoButton.SetActive(true);
 
 		this.StartCoroutine (this.SetupGame());
 		yield return null;
@@ -80,8 +88,13 @@ public class GameManager : MonoBehaviour
 
 	private IEnumerator SetupGame()
 	{
+<<<<<<< HEAD
+      	// Ensure images are transparent
+		for (int i = 0; i < scenePainting.Count; i++) 
+=======
 		// Ensure images are transparent
 		for (int i = 0; i < scenePainting.Count; i++)
+>>>>>>> afcf5c29bd99e0c3bd9b78a0cd953e8f473fdeeb
 		{
 			Color col = Color.white;
 			col.a = 0.0f;
@@ -96,7 +109,7 @@ public class GameManager : MonoBehaviour
 
 			yield return null;
 		}
-
+ 
 		dataHolder.lastPainting = this.selectedImage;
 		Debug.Log ("Using painting " + this.selectedImage);
 
@@ -139,13 +152,15 @@ public class GameManager : MonoBehaviour
 			break;
 		}
 
+
 		// Fade images in
 		yield return this.fadeScript.StartCoroutine(this.fadeScript.FadeImagesSimultaneously(scenePainting.ToArray(), true, this.initialFadeSpeed));
 
-		yield return new WaitForSeconds (this.firstFadeDelay);
+        yield return new WaitUntil(() => isGessoSet == true);
+        //yield return new WaitForSeconds (this.firstFadeDelay);
 
-		// Fade out desired images
-		yield return this.StartCoroutine(this.FadePaintingPart(0));
+        // Fade out desired images
+        yield return this.StartCoroutine(this.FadePaintingPart(0));
 
 		// Wait for round time
 		yield return new WaitForSeconds(this.drawTime);
@@ -203,8 +218,16 @@ public class GameManager : MonoBehaviour
 		this.paletteButton.SetActive (true);
 	}
 
+<<<<<<< HEAD
+    public void SetGesso()
+    {
+        isGessoSet = true;
+        gessoButton.SetActive(false);
+    }
+=======
 	public void LoadMenuScene()
 	{
 		SceneManager.LoadScene ("Menu");
 	}
+>>>>>>> afcf5c29bd99e0c3bd9b78a0cd953e8f473fdeeb
 }

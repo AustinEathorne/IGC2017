@@ -45,6 +45,7 @@ public class DrawingCurves : MonoBehaviour
 			RaycastHit hit;
 			if (objPlane.Raycast(myRay, out rayDistance))
             {
+                //hit.transform.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
                 startPosition = myRay.GetPoint(rayDistance);
             }
         }

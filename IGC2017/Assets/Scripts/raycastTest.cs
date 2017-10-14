@@ -18,6 +18,7 @@ public class raycastTest : MonoBehaviour {
 
 			if (Physics.Raycast (ray, out hit))
 			{
+				Debug.Log (hit.transform.gameObject.name);
 				hitLocation = ray.GetPoint (hit.distance);
 				Debug.Log (hitLocation);
 			}

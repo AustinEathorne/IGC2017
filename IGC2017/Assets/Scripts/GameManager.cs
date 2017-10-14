@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour 
 {
@@ -80,7 +81,7 @@ public class GameManager : MonoBehaviour
 	private IEnumerator SetupGame()
 	{
 		// Ensure images are transparent
-		for (int i = 0; i < scenePainting.Count; i++) 
+		for (int i = 0; i < scenePainting.Count; i++)
 		{
 			Color col = Color.white;
 			col.a = 0.0f;
@@ -196,8 +197,14 @@ public class GameManager : MonoBehaviour
 	{
 		return this.selectedColour;
 	}
+
 	public void SetPaletteButtonActive()
 	{
 		this.paletteButton.SetActive (true);
+	}
+
+	public void LoadMenuScene()
+	{
+		SceneManager.LoadScene ("Menu");
 	}
 }

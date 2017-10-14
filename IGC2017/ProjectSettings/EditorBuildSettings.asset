@@ -9,5 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/main.unity
     guid: 14f43a4218add4c46851d5c72203e819
   - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 18c26e94f994d6d4fae684f5aead488d
+  - enabled: 1
     path: Assets/Scenes/LineDrawing.unity
     guid: fb66ed4a5198165428b1c6bf4da0acbc

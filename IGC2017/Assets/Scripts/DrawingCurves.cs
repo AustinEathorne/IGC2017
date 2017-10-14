@@ -34,8 +34,13 @@ public class DrawingCurves : MonoBehaviour
 
 			lastLine = thisLine;
 
-			// Grab selected colour from the game manager
-			this.thisLine.GetComponent<TrailRenderer>().material.SetColor("_EmissionColor", gameManager.GetSelectedColour());
+            // Grab selected colour from the game manager
+            this.thisLine.GetComponent<TrailRenderer>().material.color = gameManager.GetSelectedColour();
+            this.thisLine.GetComponent<TrailRenderer>().material.SetColor("_Albedo", gameManager.GetSelectedColour());
+            this.thisLine.GetComponent<TrailRenderer>().material.SetColor("_EmissionColor", gameManager.GetSelectedColour());
+            
+
+
 
             Ray myRay = Camera.main.ScreenPointToRay(Input.mousePosition);
             float rayDistance;

@@ -693,7 +693,7 @@ MonoBehaviour:
   lineDrawer: {fileID: 382850633}
   colourPalette: {fileID: 1366032652}
   firstFadeDelay: 1
-  drawTime: 45
+  drawTime: 25
   initialFadeSpeed: 1
   imageFadeSpeed: 3
   scenePainting:
@@ -1593,7 +1593,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 45
+  m_Text: 25
 --- !u!222 &1723867293
 CanvasRenderer:
   m_ObjectHideFlags: 0

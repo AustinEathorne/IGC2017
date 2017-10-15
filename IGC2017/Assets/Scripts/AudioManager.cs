@@ -6,6 +6,7 @@ public class AudioManager : Singleton<AudioManager>
 {
 	private static AudioManager instance = null;
 
+
     public AudioSource clipToPlay;
 
     [SerializeField]
@@ -36,7 +37,7 @@ public class AudioManager : Singleton<AudioManager>
 
     public void Start()
     {
-        clipToPlay = GetComponentInChildren<AudioSource>();
+        //clipToPlay = GetComponentInChildren<AudioSource>();
     }
 
     public void PlayStartClip()

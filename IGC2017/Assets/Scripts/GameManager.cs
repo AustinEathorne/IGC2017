@@ -200,18 +200,20 @@ public class GameManager : MonoBehaviour
 
 		// Fade out desired images
 		yield return this.StartCoroutine(this.FadePaintingPart(3));
-
 		// Wait for round time
 		this.currentTimeLimit = this.drawTime;
 		yield return new WaitForSeconds(this.drawTime);
 
 		yield return this.StartCoroutine (this.FadePaintingPart(1));
-
 		// Wait for round time
 		this.currentTimeLimit = this.drawTime;
 		yield return new WaitForSeconds(this.drawTime);
 
 		yield return this.StartCoroutine (this.FadePaintingPart(2));
+		// Wait for round time
+		this.currentTimeLimit = this.drawTime;
+		yield return new WaitForSeconds(this.drawTime);
+
 
 		// Turn off line drawing and enable button to finish
 		this.lineDrawer.SetActive(false);

@@ -6,7 +6,16 @@ public class AudioManager : Singleton<AudioManager>
 {
 	private static AudioManager instance = null;
 
-	public static AudioManager Instance
+    private AudioSource clipToPlay;
+
+    [SerializeField]
+    private AudioClip OnStartClip;
+    [SerializeField]
+    private AudioClip OnRaceModeClip;
+    [SerializeField]
+    private AudioClip OnEndClick;
+
+    public static AudioManager Instance
 	{
 		get
 		{
@@ -24,4 +33,27 @@ public class AudioManager : Singleton<AudioManager>
 		instance = this;
 		DontDestroyOnLoad (this);
 	}
+
+    public void Start()
+    {
+        clipToPlay = GetComponentInChildren<AudioSource>();
+    }
+
+    public void PlayStartClip()
+    {
+        clipToPlay.clip = OnStartClip;
+        clipToPlay.Play();
+    }
+
+    public void PlayRaceModeClip()
+    {
+        clipToPlay.clip = OnRaceModeClip;
+        clipToPlay.Play();
+    }
+
+    public void PlayEndClip()
+    {
+        clipToPlay.clip = OnEndClick;
+        clipToPlay.Play();
+    }
 }

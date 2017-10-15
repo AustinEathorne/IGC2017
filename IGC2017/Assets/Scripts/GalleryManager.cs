@@ -13,6 +13,9 @@ public class GalleryManager : MonoBehaviour
 	[SerializeField]
 	private GameObject imagePrefab;
 
+	[SerializeField]
+	private float fadeSpeed = 1.0f;
+
 
 	// Path Shit
 	private DirectoryInfo directoryInfo;
@@ -42,9 +45,9 @@ public class GalleryManager : MonoBehaviour
 			imagePath = info.FullName;
 
 			GameObject clone = Instantiate (imagePrefab, gridLayout.position, Quaternion.identity, gridLayout);
+			clone.GetComponent<Image> ().color = new Color (255.0f, 255.0f, 255.0f, 0.0f);
 
 			WWW www = new WWW (imagePath);
-
 			yield return www;
 
 			Sprite tempSprite = Sprite.Create (www.texture, 
@@ -52,6 +55,8 @@ public class GalleryManager : MonoBehaviour
 				new Vector2(0, 0));
 
 			clone.GetComponent<Image> ().sprite = tempSprite;
+
+			yield return this.GetComponent<FadeScript> ().FadeImage (clone.GetComponent<Image>(), true, fadeSpeed);
 		}
 
 		yield return null;

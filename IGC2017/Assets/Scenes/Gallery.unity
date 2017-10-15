@@ -456,6 +456,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0982d906d776a784c9bd4bb2899ad3fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStartClip: {fileID: 0}
+  OnRaceModeClip: {fileID: 0}
+  OnEndClick: {fileID: 0}
 --- !u!4 &799393336
 Transform:
   m_ObjectHideFlags: 0
@@ -478,6 +481,7 @@ GameObject:
   m_Component:
   - component: {fileID: 934990527}
   - component: {fileID: 934990528}
+  - component: {fileID: 934990529}
   m_Layer: 0
   m_Name: GalleryManager
   m_TagString: Untagged
@@ -512,6 +516,18 @@ MonoBehaviour:
   gridLayout: {fileID: 1948977339}
   imagePrefab: {fileID: 1437955750036572, guid: 3aae22584a46f2f4fae0e30b6234d84d,
     type: 2}
+  fadeSpeed: 2
+--- !u!114 &934990529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 934990526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9348a784c686cba47b201b5abf9cea51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &961933971
 GameObject:
   m_ObjectHideFlags: 0
@@ -733,7 +749,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1496291242
 RectTransform:
   m_ObjectHideFlags: 0

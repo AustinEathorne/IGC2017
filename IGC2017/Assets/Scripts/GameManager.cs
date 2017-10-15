@@ -264,6 +264,9 @@ public class GameManager : MonoBehaviour
 		timeText.gameObject.SetActive (false);
 		finishButton.gameObject.SetActive (false);
 
+        AudioManager audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+        audioManager.PlayEndClip();
+
 		SceneManager.LoadScene ("Gallery");
 	}
 

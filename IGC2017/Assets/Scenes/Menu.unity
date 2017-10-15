@@ -757,7 +757,7 @@ GameObject:
   - component: {fileID: 1089246448}
   m_Layer: 0
   m_Name: AudioManager
-  m_TagString: Untagged
+  m_TagString: AudioManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -773,6 +773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0982d906d776a784c9bd4bb2899ad3fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clipToPlay: {fileID: 0}
   OnStartClip: {fileID: 8300000, guid: a4babc553a5db834aa4994d81478da63, type: 3}
   OnRaceModeClip: {fileID: 8300000, guid: 0e5b2bc7ba72d0d4684b8113bc6c4cd1, type: 3}
   OnEndClick: {fileID: 8300000, guid: 7199d4ab2c09d27468c23e7f798166f1, type: 3}

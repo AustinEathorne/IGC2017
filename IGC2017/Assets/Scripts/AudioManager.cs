@@ -6,7 +6,7 @@ public class AudioManager : Singleton<AudioManager>
 {
 	private static AudioManager instance = null;
 
-    private AudioSource clipToPlay;
+    public AudioSource clipToPlay;
 
     [SerializeField]
     private AudioClip OnStartClip;

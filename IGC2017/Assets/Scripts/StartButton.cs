@@ -30,8 +30,6 @@ public class StartButton : MonoBehaviour
 	public IEnumerator StartGameCo()
 	{
 		this.gameObject.GetComponent<FadeScript> ().FadeImagesSimultaneously (images.ToArray(), false, imageFadeSpeed);
-
-
 		InstructionsPanel.SetActive(false);
 		SceneManager.LoadScene("LineDrawing");
 

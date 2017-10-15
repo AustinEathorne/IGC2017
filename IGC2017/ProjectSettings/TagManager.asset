@@ -8,6 +8,7 @@ TagManager:
   - Button
   - DataHolder
   - MainPlane
+  - AudioManager
   layers:
   - Default
   - TransparentFX

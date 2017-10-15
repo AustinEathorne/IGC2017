@@ -261,7 +261,10 @@ public class GameManager : MonoBehaviour
 
 	public void LoadMenuScene()
 	{
-		SceneManager.LoadScene ("Menu");
+		timeText.gameObject.SetActive (false);
+		finishButton.gameObject.SetActive (false);
+
+		SceneManager.LoadScene ("Gallery");
 	}
 
 }

@@ -11,6 +11,9 @@ public class ScreenShotTest : MonoBehaviour
 
 	private int captureCount = 0;
 
+	[SerializeField]
+	private DataHolder dataHolder;
+
 	/*
 	private void Update()
 	{
@@ -29,10 +32,19 @@ public class ScreenShotTest : MonoBehaviour
 	{
 		Debug.Log ("Capture");
 
-		string path = Application.persistentDataPath + "/" + "test" + (captureCount++).ToString() + ".png";
+		int temp = PlayerPrefs.GetInt ("captureCount");
+		Debug.Log ("temp" + temp.ToString());
 
-		Debug.Log (Application.persistentDataPath);
+		string path = Application.persistentDataPath + "/" + "test" + temp.ToString() + ".png";
+
+		temp++;
+
+		PlayerPrefs.SetInt ("captureCount", temp);
+
+		//Debug.Log (temp.ToString());
 
 		ScreenCapture.CaptureScreenshot (path, 4);
+
+		Debug.Log ("path: " + path);
 	}
 }

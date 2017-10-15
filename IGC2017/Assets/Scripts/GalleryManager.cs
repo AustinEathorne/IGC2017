@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class GalleryManager : MonoBehaviour 
 {
@@ -24,8 +25,12 @@ public class GalleryManager : MonoBehaviour
 		this.StartCoroutine (this.LoadGallery ());
 	}
 
+	public void StartLoad()
+	{
+		this.StartCoroutine (this.LoadGallery());
+	}
 
-	public IEnumerator LoadGallery()
+	private IEnumerator LoadGallery()
 	{
 		path = Application.persistentDataPath;
 
@@ -65,5 +70,10 @@ public class GalleryManager : MonoBehaviour
 
 			info.Delete ();
 		}
+	}
+
+	public void LoadMenuScene()
+	{
+		SceneManager.LoadScene ("Menu");
 	}
 }

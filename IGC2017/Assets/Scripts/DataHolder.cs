@@ -8,7 +8,6 @@ public class DataHolder : Singleton<DataHolder>
 
 	public int lastPainting = 0;
 
-
 	public static DataHolder Instance
 	{
 		get

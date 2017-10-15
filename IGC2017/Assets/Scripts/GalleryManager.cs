@@ -56,7 +56,7 @@ public class GalleryManager : MonoBehaviour
 
 			clone.GetComponent<Image> ().sprite = tempSprite;
 
-			yield return this.GetComponent<FadeScript> ().FadeImage (clone.GetComponent<Image>(), true, fadeSpeed);
+			//yield return this.GetComponent<FadeScript> ().FadeImage (clone.GetComponent<Image>(), true, fadeSpeed);
 		}
 
 		yield return null;

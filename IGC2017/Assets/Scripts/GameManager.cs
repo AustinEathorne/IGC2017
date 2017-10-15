@@ -106,7 +106,10 @@ public class GameManager : MonoBehaviour
 		{
 			currentTimeLimit -= Time.deltaTime;
 
-			timeText.text = currentTimeLimit.ToString ();
+			if(currentTimeLimit > 0.0f)
+			{
+				timeText.text = currentTimeLimit.ToString ("F0");
+			}
 		}
 	}
 
@@ -130,7 +133,7 @@ public class GameManager : MonoBehaviour
 		}
  
 		dataHolder.lastPainting = this.selectedImage;
-		Debug.Log ("Using painting " + this.selectedImage);
+		// Debug.Log ("Using painting " + this.selectedImage);
 
 		// pass scene images the appropriate sprites
 		switch(selectedImage)

@@ -55,7 +55,7 @@ public class GalleryManager : MonoBehaviour
 				new Vector2(0, 0));
 
 			clone.GetComponent<Image> ().sprite = tempSprite;
-
+			clone.GetComponent<Image> ().color = new Color (255.0f, 255.0f, 255.0f, 255.0f);
 			//yield return this.GetComponent<FadeScript> ().FadeImage (clone.GetComponent<Image>(), true, fadeSpeed);
 		}
 

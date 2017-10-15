@@ -33,7 +33,7 @@ public class ColourSelector : MonoBehaviour {
 	{
 		if (Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
 		{
-			if (Application.platform == RuntimePlatform.WindowsEditor) 
+			if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
 				pointerEventData.position = Input.mousePosition;
 			else 
 				pointerEventData.position = (Vector3)Input.GetTouch(0).position;
